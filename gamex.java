@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 public class gamex
 {
@@ -8,12 +9,14 @@ public class gamex
         String prompt;
         String prompt1="gg_cmd";
         String prompt2="length_cmd";
+        String propmt3="rock_cmd";
         Scanner sc_1=new Scanner(System.in);
         System.out.println(green+"-----  |---|  |- -|  |---  -   -"+reset);
         System.out.println(green+"|  _   |___|  | | |  |---    x  "+reset);
         System.out.println(green+"|_| |  |   |  |   |  |---  -   -"+reset);
         System.out.println("To play number guessing game type gg_cmd");
         System.out.println("To play word length game type length_cmd");
+        System.out.println("To play rock papers scissor type rock_cmd");//in process 
         System.out.println("Enter the prompt");
         prompt=sc_1.nextLine();
         if(prompt.equals(prompt1))
@@ -71,6 +74,80 @@ public class gamex
           }
         }
         System.out.println("your score is "+score);
+    }
+    if(prompt.equals(propmt3))
+    {
+      int score=0;
+      System.out.println("Rules:: there will be total five rounds");
+      for(int i=1;i<=5;i++)
+      {
+      String[]computer={"r","p","s"};
+      String computer_move=computer[new Random().nextInt(computer.length)]; 
+      String player;
+      System.out.println("Enter your move r/p/s");
+      player=sc_1.nextLine();
+      System.out.println("The computer choose "+computer_move);
+      if(computer_move.equals("r"))
+        {
+          if(player.equals("p"))
+          {
+            System.out.println("Congrats you win");
+            score++;
+            continue;
+          }
+          else if(player.equals("s"))
+          {
+            System.out.println("Oh no you loose!");
+            continue;
+          }
+          else if(player.equals("r"))
+          {
+            System.out.println("It is a tie");
+            continue;
+          }
+        }  
+        if(computer_move.equals("p"))
+        {
+          if(player.equals("s"))
+          {
+            System.out.println("Congrats you win");
+             score++;
+             continue;
+          }
+          else if(player.equals("r"))
+          {
+            System.out.println("Oh no you loose!");
+            continue;
+          }
+          else if(player.equals("r"))
+          {
+            System.out.println("It is a tie");
+            continue;
+          }
+        }
+        if(computer_move.equals("s"))
+        {
+          if(player.equals("p"))
+          {
+            System.out.println("Congrats you win");
+             score++;
+             continue;
+          }
+          else if(player.equals("r"))
+          {
+            System.out.println("Oh no you loose!");
+            continue;
+          }
+          else if(player.equals("r"))
+          {
+            System.out.println("It is a tie");
+            continue;
+          }
+        }
+        computer_move="";
+        player=""; 
+      }
+      System.out.println("YOUR SCORE IS "+score);
     }
 }
 }
